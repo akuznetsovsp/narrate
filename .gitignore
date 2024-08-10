@@ -1,0 +1,6 @@
+__pycache__/
+Utils/__pycache__/
+*.pyc
+*.pdf
+*.wav
+*.DS_Store

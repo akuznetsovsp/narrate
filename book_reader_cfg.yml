@@ -1,0 +1,11 @@
+alpha: 0.3
+beta: 0.7
+t: 0.7
+diffusion_steps: 5
+embedding_scale: 1
+pretrained_model_config_path: 'ML_model/Models/LibriTTS/config.yml'
+whole_params_path: 'ML_model/Models/LibriTTS/epochs_2nd_00020.pth'
+phonemizer_settings: {"language": "en-us","preserve_punctuation": True,"with_stress": True}
+default_reference_audio_path: 'Data/reference_audio/908-157963-0027.wav'
+preprocess_params: {"mean": -4, "std": 4, "spectrogram": {"n_mels": 80, "n_fft": 2048, "win_length": 1200, "hop_length": 300}}
+book_path: "Data/books/book.pdf"
