@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# Ensure the upload folder exists
 UPLOAD_FOLDER = "./Data/books"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -19,11 +18,9 @@ def home():
         if file.filename == "":
             return "No selected file", 400
 
-        # Save the uploaded book
         file_path = os.path.join(UPLOAD_FOLDER, "book.pdf")
         file.save(file_path)
 
-        # Generate audiobook
         reader = BookReader()
         audio_path = reader.read_book()
 

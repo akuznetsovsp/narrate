@@ -26,11 +26,8 @@ RUN git clone https://huggingface.co/yl4579/StyleTTS2-LibriTTS $APP_HOME/ML_mode
     cd $APP_HOME
 
 RUN mkdir $APP_HOME/Data/reference_audio
-# mkdir $APP_HOME/ML_model/Models && \
-# mkdir $APP_HOME/ML_model/Models/LibriTTS
 
 RUN unzip $APP_HOME/ML_model/temp/reference_audio.zip -d $APP_HOME/Data && \
-    # mv $APP_HOME/ML_model/temp/Models/LibriTTS/config.yml $APP_HOME/ML_model/Models/LibriTTS && \
     mv $APP_HOME/ML_model/temp/Models/LibriTTS/epochs_2nd_00020.pth $APP_HOME/ML_model/Models/LibriTTS && \
     rm -rf $APP_HOME/ML_model/temp
 

@@ -1,7 +1,5 @@
-# load packages
 from collections import OrderedDict
 from pydub import AudioSegment
-
 import re
 import soundfile as sf
 import time
@@ -12,16 +10,12 @@ import torch.nn.functional as F
 import torchaudio
 import librosa
 from nltk.tokenize import word_tokenize
-
 from ML_model.models import build_model, load_ASR_models, load_F0_models
 from ML_model.utils import recursive_munch
 from ML_model.text_utils import TextCleaner
-
 import torch
 import random
-
 import numpy as np
-
 import yaml
 from ML_model.Modules.diffusion.sampler import (
     DiffusionSampler,
@@ -31,9 +25,7 @@ from ML_model.Modules.diffusion.sampler import (
 from phonemizer.backend import EspeakBackend
 from phonemizer.backend.espeak.wrapper import EspeakWrapper
 from ML_model.Utils.PLBERT.util import load_plbert
-
 import logging
-
 import pymupdf
 
 
@@ -338,7 +330,6 @@ class BookReader:
         all_paragraphs = []
 
         for page_num in range(len(doc)):
-            # for page_num in range(61, 62):
             page = doc.load_page(page_num)
             blocks = page.get_text("dict")["blocks"]
             print("BLOCKS")
@@ -349,7 +340,6 @@ class BookReader:
                     paragraph = ""
                     for line in block["lines"]:
                         for span in line["spans"]:
-                            # span = self.clean_text(span)
                             if span["text"][-1] == "-":
                                 paragraph += span["text"][:-1]
                             else:
@@ -409,10 +399,3 @@ class BookReader:
         self.merge_audio_output()
 
         return "audiobook.wav"
-
-
-# import re
-
-# text = "While they were doing this they discovered a lot of new and wonderful things that the pirates must have stolen from other ships: Kashmir shawls as thin as a cobweb, embroidered with flowers of gold; jars of fine tobacco from Jamaica; carved ivory boxes full of Russian tea; an old violin with a string broken and a picture on the back; a set of big chessmen, carved out of coral and amber; a walking-stick which had a sword inside it when you pulled the handle; six wine-glasses with turquoise and silver round the rims; and a lovely great sugar-bowl, made of mother o' pearl"
-
-# re.split(r"[.;!?]", text)
